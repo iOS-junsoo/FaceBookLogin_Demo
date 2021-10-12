@@ -13,6 +13,8 @@
 		9978DA3527159261009DD07A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9978DA3327159261009DD07A /* Main.storyboard */; };
 		9978DA3727159263009DD07A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9978DA3627159263009DD07A /* Assets.xcassets */; };
 		9978DA3A27159263009DD07A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9978DA3827159263009DD07A /* LaunchScreen.storyboard */; };
+		9978DA43271594FF009DD07A /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9978DA42271594FF009DD07A /* FacebookCore */; };
+		9978DA45271594FF009DD07A /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 9978DA44271594FF009DD07A /* FacebookLogin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,7 @@
 		9978DA3627159263009DD07A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9978DA3927159263009DD07A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9978DA3B27159263009DD07A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9978DA4627159866009DD07A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9978DA45271594FF009DD07A /* FacebookLogin in Frameworks */,
+				9978DA43271594FF009DD07A /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +68,7 @@
 				9978DA3627159263009DD07A /* Assets.xcassets */,
 				9978DA3827159263009DD07A /* LaunchScreen.storyboard */,
 				9978DA3B27159263009DD07A /* Info.plist */,
+				9978DA4627159866009DD07A /* README.md */,
 			);
 			path = FaceBookLogin_Demo;
 			sourceTree = "<group>";
@@ -83,6 +89,10 @@
 			dependencies = (
 			);
 			name = FaceBookLogin_Demo;
+			packageProductDependencies = (
+				9978DA42271594FF009DD07A /* FacebookCore */,
+				9978DA44271594FF009DD07A /* FacebookLogin */,
+			);
 			productName = FaceBookLogin_Demo;
 			productReference = 9978DA2A27159261009DD07A /* FaceBookLogin_Demo.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +121,9 @@
 				Base,
 			);
 			mainGroup = 9978DA2127159261009DD07A;
+			packageReferences = (
+				9978DA41271594FF009DD07A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 9978DA2B27159261009DD07A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -360,6 +373,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9978DA41271594FF009DD07A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9978DA42271594FF009DD07A /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9978DA41271594FF009DD07A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		9978DA44271594FF009DD07A /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9978DA41271594FF009DD07A /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9978DA2227159261009DD07A /* Project object */;
 }
