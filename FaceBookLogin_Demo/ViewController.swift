@@ -9,15 +9,57 @@ import UIKit
 import FBSDKLoginKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //기본적으로 제공하는 버튼
         let loginButton = FBLoginButton()
         loginButton.center = view.center
-        view.addSubview(loginButton)
+        
     }
+    @IBAction func login(_ sender: UIButton) {
+        let manager = LoginManager()
+        manager.logIn(permissions: ["public_profile"], from: self) { result, error in
+            if let error = error {
+                print("Process error: \(error)")
+                return
 
+            }
+            guard let result = result else {
+                print("No Result")
+
+                return
+
+            }
+            if result.isCancelled {
+                print("Login Cancelled")
+                return
+            }
+            
+            Profile.loadCurrentProfile { profile, error in
+                if let firstName = profile?.firstName {
+                    print("Hello, \(firstName)")
+                    self.userName.text = firstName
+                }
+            }
+            
+            let profilePictureView = FBProfilePictureView()
+            profilePictureView.profileID = AccessToken.current!.userID
+            profilePictureView.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
+            self.userImage.addSubview(profilePictureView)
+
+            // result properties
+            //  - token : 액세스 토큰
+            //  - isCancelled : 사용자가 로그인을 취소했는지 여부
+            //  - grantedPermissions : 부여 된 권한 집합
+            //
+
+            
+    }
+        
+}
 
 }
 
@@ -58,3 +100,4 @@ class ViewController: UIViewController {
 //            //  - declinedPermissions : 거부 된 권한 집합
 //        }
 //    }
+
